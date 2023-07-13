@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Uprightdisplay=swap');
+
+//! Одщие стили
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    min-width: 320px;
+    overflow-x: hidden;
+    color: #aaaaaa;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1310px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 25px 0;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    &__name {
+        color: #fff;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+
+    &__status {
+        color: green;
+    }
+
+    &__link {
+        color: #DCCA87;
+        padding-bottom: 1px;
+        border-bottom: 1px solid #DCCA87;
+        margin-right: 30px;
+    }
+
+    &__logout {
+        color: red;
+    }
+}
+
+//! Список пользователей
+
+.user{
+    background-image: url('./../../images/vine.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .65);
+    }
+    
+    &__inner {
+        position: relative;
+        z-index: 2;
+        background: #040404;
+        padding: 30px;
+        border-radius: 5px;
+    }
+}
+
+.users-list-list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.users .search {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.users .search .text {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.users .search input {
+    position: absolute;
+    height: 42px;
+    width: calc(100% - 50px);
+    border: 1px solid #ccc;
+    padding: 0 13px;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.users .search input.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.users .search button {
+    width: 47px;
+    height: 42px;
+    border: none;
+    outline: none;
+    color: #333;
+    background-color: #fff;
+    border-radius: 0 5px 5px 0;
+    font-size: 17px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.users .search button.active {
+    color: #fff;
+    background-color: #333;
+}
+
+.users .search button.active i::before {
+    content: "\f00d";
+}
+
+.users__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+    margin-bottom: 15px;
+    page-break-after: 10px;
+    border-bottom-color: #f1f1f1;
+    &:last-child {
+        border: none;
+        margin-bottom: 0;
+    }
+    &-content{
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+    &-img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+    &-p{
+    color: #676767;
+    }
+    .status-dot {
+        font-size: 12px;
+        color: #458669;
+        &.status-dot.offline {
+            color: #ccc;
+        }
+    }
+}
+
+:is(.users-list, .chat-box)::-webkit-scrollbar {
+    width: 0;
+}
+
+//! Страница чата
+
+.chat{
+    background-image: url('./../../images/vine.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .65);
+    }
+    &__inner {
+        position: relative;
+        z-index: 2;
+        background: #040404;
+        padding: 30px;
+        border-radius: 5px;
+        width: 500px;
+    }
+    &-box{
+        overflow-y: auto;
+        height: 500px;
+        padding: 10px 30px 20px 30px;
+        box-shadow: inset 0 32px 32px -32px rgba(0, 0, 0, 0.05), inset 0 -32px 32px -32px rgba(0, 0, 0, 0.05);
+    }
+    &__outgoing{
+        margin: 15px 0;
+        display: flex;
+        &-details{
+            width: calc(100% - 130px);
+            margin-left: auto;
+        }
+        &-p{
+            background-color: #333;
+            color: #fff;
+            border-radius: 18px 18px 0 18px;
+            word-wrap: break-word;
+            padding: 8px 16px;
+            box-shadow: 0 0 32px rgba(0, 0, 0, 0.08), 0 0 16px -16px rgba(0, 0, 0, 0.1);
+        }
+    }
+    &__incoming{
+        margin: 15px 0;
+        display: flex;
+        align-items: flex-end;
+        &-img{
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+        }
+        &-details{
+            margin-left: 10px;
+            width: calc(100% - 130px);
+            margin-right: auto;
+        }
+        &-p{
+            background-color: #fff;
+            color: #333;
+            border-radius: 18px 18px 18px 0;
+            word-wrap: break-word;
+            padding: 8px 16px;
+            box-shadow: 0 0 32px rgba(0, 0, 0, 0.08), 0 0 16px -16px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.back-icon {
+    font-size: 25px;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.typing-area {
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    input {
+        outline: none;
+        border: 1px solid #F5EFDB;
+        color: #fff;
+        background: transparent;
+        padding: 16px;
+        font-family: inherit;
+        height: 45px;
+        width: calc(100% - 58px);
+        font-size: 17px;
+        padding: 0 13px;
+        border-radius: 5px 0 0 5px;
+    }
+    button {
+        width: 55px;
+        border: none;
+        outline: none;
+        background-color: #fff;
+        color: #000;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 30px;
+    }
+}
+        
+//! Страница курьера
+
+.map__info {
+    padding: 100px 0 0;
+}
+
+.map__info__title {
+    color: #FFF;
+    font-size: 55px;
+    margin-bottom: 35px;
+}
+
+.map {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.info {
+    display: block;
+    max-width: 450px;
+    background: #FFF;
+    z-index: 8000;
+    margin: 15px 0;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15), 0 8px 30px -5px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+}
+
+.info__input {
+    outline: none;
+    width: 100%;
+    height: 35px;
+    font-family: inherit;
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.info__input-descr {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.info__text {
+    display: block;
+    padding: 10px;
+    line-height: 20px;
+}
+
+.info__descr {
+    padding: 0 10px;
+}
+
+.info__descr:last-child {
+    padding-bottom: 10px;
+}
